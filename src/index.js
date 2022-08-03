@@ -5,18 +5,19 @@ class App extends React.Component{
 
     constructor(props){
         super(props)
-        this.state = { lattitude: 25}
+        this.state = { latitude: null, errormessage: ''}
         window.navigator.geolocation.getCurrentPosition(
             (position)=>{
                 this.setState( { latitude:position.coords.latitude })
             },
-            (error)=>console.log(error)
+            (error)=>this.setState( { errormessage: error.message})
         );
     }
     render(){
         return(
             <div>
-                {this.state.lattitude}
+                {this.state.latitude}
+                {this.state.errormessage}
             </div>
         );
     }
