@@ -14,12 +14,23 @@ class App extends React.Component{
         );
     }
     render(){
-        return(
-            <div>
-                {this.state.latitude}
-                {this.state.errormessage}
-            </div>
-        );
+        // return(
+            // <div>
+            //     {this.state.latitude}
+            //     {this.state.errormessage}
+            // </div>
+        // );
+
+        //Conditional rendering
+        if(this.state.errormessage && !this.state.latitude){
+            return <div> {this.state.errormessage} </div>
+        }
+        if(!this.state.errormessage && this.state.latitude){
+            return <div> {this.state.latitude} </div>
+        }
+        else{
+            return <div>Loading</div>
+        }
     }
 }
 ReactDOM.render(
